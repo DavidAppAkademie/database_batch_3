@@ -24,46 +24,48 @@ class _ParticipantsPageState extends State<ParticipantsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(Sizes.p16),
-        child: Center(
-          child: Column(
-            children: [
-              ParticipantsDataView(participants: participants),
-              Sizes.gapH32,
-              ElevatedButton(
-                onPressed: () async {
-                  await widget.databaseRepository.createParticipantList([]);
-                },
-                child: const Text("Create List"),
-              ),
-              Sizes.gapH16,
-              ElevatedButton(
-                onPressed: () async {
-                  final List<Participant>? list =
-                      await widget.databaseRepository.readParticipantList();
-                  setState(() {
-                    participants = list;
-                  });
-                },
-                child: const Text("Read List"),
-              ),
-              Sizes.gapH16,
-              ElevatedButton(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(Sizes.p16),
+          child: Center(
+            child: Column(
+              children: [
+                ParticipantsDataView(participants: participants),
+                Sizes.gapH32,
+                ElevatedButton(
                   onPressed: () async {
-                    Participant participant = generateRandomParticipant();
-                    await widget.databaseRepository
-                        .updateParticipantList([participant]);
+                    await widget.databaseRepository.createParticipantList([]);
                   },
-                  child: const Text("Update List")),
-              Sizes.gapH16,
-              ElevatedButton(
-                onPressed: () async {
-                  await widget.databaseRepository.deleteParticipantList();
-                },
-                child: const Text("Delete List"),
-              ),
-            ],
+                  child: const Text("Create List"),
+                ),
+                Sizes.gapH16,
+                ElevatedButton(
+                  onPressed: () async {
+                    final List<Participant>? list =
+                        await widget.databaseRepository.readParticipantList();
+                    setState(() {
+                      participants = list;
+                    });
+                  },
+                  child: const Text("Read List"),
+                ),
+                Sizes.gapH16,
+                ElevatedButton(
+                    onPressed: () async {
+                      Participant participant = generateRandomParticipant();
+                      await widget.databaseRepository
+                          .updateParticipantList([participant]);
+                    },
+                    child: const Text("Update List")),
+                Sizes.gapH16,
+                ElevatedButton(
+                  onPressed: () async {
+                    await widget.databaseRepository.deleteParticipantList();
+                  },
+                  child: const Text("Delete List"),
+                ),
+              ],
+            ),
           ),
         ),
       ),
