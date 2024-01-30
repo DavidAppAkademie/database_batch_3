@@ -8,8 +8,10 @@ class MockService {
   }
 
   void clearList() => _participantList?.clear();
-  void updateList(List<Participant> participants) =>
-      _participantList = participants;
+  void updateList(List<Participant> participants) {
+    _participantList?.addAll(participants);
+  }
+
   void deleteList() => _participantList = null;
   List<Participant>? getAll() => _participantList;
 }
