@@ -1,7 +1,8 @@
+import 'package:database_batch_3/features/crud/data/mock/mock_data_source.dart';
 import 'package:database_batch_3/features/crud/data/mock/mock_repository.dart';
-import 'package:database_batch_3/features/crud/data/mock/mock_service.dart';
 import 'package:database_batch_3/features/crud/presentation/participants_page.dart';
 import 'package:flutter/material.dart';
+
 import 'features/crud/data/shared_prefs/shared_prefs_repository.dart';
 
 class App extends StatefulWidget {
@@ -19,16 +20,16 @@ class _AppState extends State<App> {
   // nutzt die App als Datenquelle entweder eine lokale Variablen, JSON-Datei oder
   // die SharedPreferences.
   //
-  late MockService mockService;
+  late MockDataSource mockDataSource;
   late DatabaseRepository databaseRepository;
   @override
   void initState() {
     super.initState();
-    mockService = MockService();
+    mockDataSource = MockDataSource();
 
-    databaseRepository //= JsonRepository(JsonService());
-        //               = SharedPrefsRepository(SharedPrefsService());
-        = MockRepository(mockService);
+    databaseRepository //= JsonRepository(JsonDataSource());
+        //               = SharedPrefsRepository(SharedPrefsDataSource());
+        = MockRepository(mockDataSource);
   }
 
   @override
