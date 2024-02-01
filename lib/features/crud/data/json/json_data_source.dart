@@ -3,10 +3,10 @@ import 'dart:io';
 
 import 'package:database_batch_3/features/crud/domain/participant.dart';
 import 'package:flutter/foundation.dart';
-import 'package:path_provider/path_provider.dart' as path_provider;
 import 'package:path/path.dart' as path;
+import 'package:path_provider/path_provider.dart' as path_provider;
 
-class JsonService {
+class JsonDataSource {
   static const String _fileName = "participants.json";
   //CRUD
   //Create
