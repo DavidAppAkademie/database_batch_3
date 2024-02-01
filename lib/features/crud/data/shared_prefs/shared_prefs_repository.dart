@@ -1,31 +1,30 @@
+export 'package:database_batch_3/features/crud/data/database_repository.dart';
 import 'package:database_batch_3/features/crud/data/database_repository.dart';
-import 'package:database_batch_3/features/crud/data/shared_prefs/shared_prefs_data_source.dart';
+import 'package:database_batch_3/features/crud/data/shared_prefs/shared_prefs_service.dart';
 import 'package:database_batch_3/features/crud/domain/participant.dart';
 
-export 'package:database_batch_3/features/crud/data/database_repository.dart';
-
 class SharedPrefsRepository implements DatabaseRepository {
-  final SharedPrefsDataSource _sharedPrefsDataSource;
+  final SharedPrefsService _sharedPrefsService;
 
-  SharedPrefsRepository(this._sharedPrefsDataSource);
+  SharedPrefsRepository(this._sharedPrefsService);
 
   @override
   Future<void> createParticipantList(List<Participant> participants) async {
-    return _sharedPrefsDataSource.createParticipantList(participants);
+    return _sharedPrefsService.createParticipantList(participants);
   }
 
   @override
   Future<List<Participant>?> readParticipantList() async {
-    return _sharedPrefsDataSource.readParticipantList();
+    return _sharedPrefsService.readParticipantList();
   }
 
   @override
   Future<bool> updateParticipantList(List<Participant> participants) async {
-    return _sharedPrefsDataSource.updateParticipantList(participants);
+    return _sharedPrefsService.updateParticipantList(participants);
   }
 
   @override
   Future<void> deleteParticipantList() async {
-    return _sharedPrefsDataSource.deleteParticipantList();
+    return _sharedPrefsService.deleteParticipantList();
   }
 }

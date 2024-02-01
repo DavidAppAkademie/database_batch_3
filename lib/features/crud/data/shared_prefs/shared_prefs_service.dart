@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:database_batch_3/features/crud/domain/participant.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class SharedPrefsDataSource {
+class SharedPrefsService {
   static const String _key = "participants";
   //CRUD
   //Create
