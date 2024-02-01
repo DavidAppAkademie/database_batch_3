@@ -1,6 +1,6 @@
 import 'package:database_batch_3/features/crud/domain/participant.dart';
 
-class MockDataSource {
+class MockService {
   List<Participant>? _participantList;
 
   void create() {
