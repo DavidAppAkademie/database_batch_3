@@ -5,11 +5,16 @@ class ParticipantsDataView extends StatelessWidget {
   final List<Participant>? participants;
   const ParticipantsDataView({Key? key, required this.participants})
       : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     if (participants == null) {
       return const Center(
         child: Text("Noch keine Daten vorhanden"),
+      );
+    } else if (participants!.isEmpty) {
+      return const Center(
+        child: Text("Liste ist leer"),
       );
     } else {
       return ListView.builder(
